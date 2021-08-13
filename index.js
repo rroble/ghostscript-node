@@ -59,7 +59,7 @@ async function combinePDFs(pdfBuffers) {
       { inputs: { writeBuffers: pdfBuffers }, output: { numFiles: 1 } },
       async ({ inputs, output }) => {
         await exec(
-          `gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=${output[0]} -dBATCH ${inputs.join(
+          `gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=${output[0]} -dBATCH -f ${inputs.join(
             ' ',
           )} -c "[ /Creator () /Producer () /DOCINFO pdfmark"`,
         );
